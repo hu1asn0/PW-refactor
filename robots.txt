@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://simonprojects.eu/sitemap-index.xml
