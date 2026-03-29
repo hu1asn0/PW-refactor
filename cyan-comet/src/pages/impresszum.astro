@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Impresszum | Simon András';
+const description = 'Simon András egyéni vállalkozó — jogi információk, adószám, elérhetőség.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="container impresszum-page">
+    <h1>Impresszum</h1>
+
+    <dl>
+      <dt>Név</dt>
+      <dd>Simon András Ev.</dd>
+
+      <dt>Adószám</dt>
+      <dd>68487959-2-42</dd>
+
+      <dt>Nyilvántartási szám</dt>
+      <dd>51817811</dd>
+
+      <dt>Cím</dt>
+      <dd>1108 Budapest, Bányató utca 26., 6. em. 27.</dd>
+
+      <dt>Bankszámlaszám</dt>
+      <dd>11710002-24145552</dd>
+
+      <dt>Bank</dt>
+      <dd>OTP Bank</dd>
+    </dl>
+  </main>
+</BaseLayout>
+
+<style>
+  .impresszum-page {
+    padding: var(--space-4xl) 0;
+    max-width: 600px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--space-2xl);
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-sm) var(--space-xl);
+  }
+
+  dt {
+    font-weight: 600;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+  }
+
+  dd {
+    font-size: 0.9375rem;
+    color: var(--color-text);
+  }
+</style>

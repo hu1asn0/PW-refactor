@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Contact | András Simon';
+const description = 'Get in touch! IT project management and AI integration — Budapest.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="container contact-page">
+    <h1>Contact</h1>
+    <p class="intro">
+      I'm open to new projects and collaborations.
+      Don't hesitate to reach out!
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h2>Email</h2>
+        <a href="mailto:info@simonprojects.eu" class="contact-link">
+          info@simonprojects.eu
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <h2>Location</h2>
+        <p>Budapest, Hungary</p>
+      </div>
+    </div>
+
+    <a href="mailto:info@simonprojects.eu" class="cta-button">
+      Write to me
+    </a>
+  </main>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    padding: var(--space-4xl) 0;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .intro {
+    color: var(--color-text-muted);
+    max-width: 500px;
+    margin-inline: auto;
+    margin-bottom: var(--space-3xl);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-xl);
+    max-width: 500px;
+    margin-inline: auto;
+    margin-bottom: var(--space-3xl);
+    text-align: center;
+  }
+
+  .contact-item h2 {
+    font-size: 1rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .contact-link {
+    font-size: 1.0625rem;
+    font-weight: 500;
+  }
+
+  .contact-item p {
+    color: var(--color-text);
+    font-size: 1.0625rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    padding: var(--space-sm) var(--space-xl);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition:
+      background-color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .cta-button:hover {
+    background-color: var(--color-accent-hover);
+    color: #ffffff;
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+</style>

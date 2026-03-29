@@ -1,0 +1,42 @@
+---
+const year = new Date().getFullYear();
+const isEn = (Astro.currentLocale || 'hu') === 'en';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; {year} Simon András e.v. — {isEn ? 'All rights reserved!' : 'Minden jog fenntartva!'}</p>
+    <div class="footer-links">
+      <a href="mailto:info@simonprojects.eu">info@simonprojects.eu</a>
+      <span class="separator">·</span>
+      <a href="/impresszum/">{isEn ? 'Legal notice' : 'Impresszum'}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) 0;
+    margin-top: var(--space-4xl);
+    text-align: center;
+  }
+
+  .site-footer p {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    font-size: 0.875rem;
+  }
+
+  .separator {
+    color: var(--color-text-muted);
+  }
+</style>

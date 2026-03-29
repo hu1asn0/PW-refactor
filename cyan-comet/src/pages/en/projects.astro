@@ -1,0 +1,366 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Portfolio | András Simon';
+const description = 'IT and technical project management portfolio — MOL, E.ON, FlexLink, SANYO and more.';
+
+const positions = [
+  {
+    role: 'IT Carve-out Project Manager',
+    company: 'E.ON Tiszántúli Áramhálózati Zrt.',
+    period: '2020 – 2021',
+    description:
+      'IT and business-side member of the carve-out project management body responsible for the operational separation of E.ON Tiszántúli. The separation was carried out as part of OPUS Global Zrt.\'s acquisition.',
+    tasks: [
+      'Participation in buyer negotiations regarding IT systems to be separated',
+      'Involvement in SAP system separation',
+      'Vendor problem resolution, escalation management',
+      'TSA contract preparation',
+      'Knowledge transfer coordination',
+    ],
+  },
+  {
+    role: 'IT Project Manager',
+    company: 'MOL Plc. — Budapest',
+    period: '2019 – 2020',
+    tasks: [
+      'IT PM for SAP (MUP-GOP rollout) external interfaces/integration/error handling',
+      'IT PM for SAP PP module development',
+      'Lead IT PM for ETRM system version upgrade',
+      'IT PM for SAP + external system backend integration (SAP + WebLogic)',
+      'Lead IT PM for physical network (LAN/WiFi) construction (Tiszaújváros)',
+      'Development tracking, schedule, deliverables and budget monitoring/controlling/reporting',
+      'CR compilation & approval',
+      'Internal/external coordination, senior management decision preparation',
+    ],
+  },
+  {
+    role: 'IT Project Manager — National Building Registry',
+    company: 'Innobyte Information Technology Kft.',
+    period: '2018 – 2019',
+    description: 'Operational management and planning of delivered projects.',
+    tasks: [
+      'Java-based web development (Backend/Frontend), delivery verification',
+      'Liaison with the client, project consortium and end users',
+      'Informing internal and external project stakeholders',
+      'Schedule development and execution',
+      'Contractual scope verification and compliance',
+      'Project monitoring and control',
+    ],
+  },
+  {
+    role: 'Product Owner',
+    company: 'AionNext Kft.',
+    period: '2017 – 2018',
+    description: 'Operational management and planning of delivered projects.',
+    tasks: [
+      'Magento 1 & 2 proposal preparation',
+      'Magento project execution with agile methodologies (user stories, stand-ups, demos)',
+      'Collaboration with architects and development teams',
+      'Client meeting facilitation, partner collaboration coordination',
+    ],
+  },
+  {
+    role: 'Project Leader — Apollo Tyre Factory Construction',
+    company: 'Beck & Pollitzer Kft. (Gyöngyöshalász)',
+    period: '2016 – 2017',
+    tasks: [
+      'Production line installation, simultaneous management of assembly teams across multiple plant sections',
+      'Liaison with Indian client base and management',
+      'Coordination of 35–70 person teams',
+    ],
+  },
+  {
+    role: 'Project Manager — Kienle & Spiess Factory Expansion',
+    company: 'Kienle + Spiess Hungary Kft. (Tokod)',
+    period: '2015 – 2016',
+    description:
+      'Manufacturing relocation from German factories to the Hungarian site. Investment budget exceeded 2 MEUR.',
+    tasks: [
+      'Budget planning and oversight across the full project lifecycle',
+      'Full-scope investment management',
+      'Reports and presentations to domestic and international management',
+      'Complete factory layout plan and technical design management',
+      'Daily supervision of on-site installations',
+      'Vendor management, HR process support',
+    ],
+  },
+  {
+    role: 'Project Manager',
+    company: 'FlexLink Systems Kft.',
+    period: '2010 – 2015',
+    tasks: [
+      'Full-scope project management in FMCG, hygiene, pharmaceutical, automotive and packaging industries (up to 300,000 EUR per project)',
+      'Full technical responsibility in planning and execution phases',
+      'GANTT project software implementation',
+      'Project after-sales activities',
+    ],
+  },
+  {
+    role: 'Project Manager',
+    company: 'FlexLink Systems Pty Ltd. — Sydney',
+    period: '2008 – 2010',
+    tasks: [
+      'Project management in FMCG, optical, hygiene and pharmaceutical industries',
+      'Internal and external resource management',
+      'Full-scope planning and procurement',
+      'Technical proposals including engineering drawings and cost calculations',
+      'International collaboration (Sweden, Malaysia)',
+    ],
+  },
+  {
+    role: 'Application Engineering & Project Engineer',
+    company: 'FlexLink Systems Kft.',
+    period: '2005 – 2008',
+    tasks: [
+      'Comprehensive project engineering (planning, execution, financial monitoring)',
+      'Mechanical design, manufacturing and installation of conveyor systems',
+      'Quotation preparation up to 1,100,000 EUR',
+      'Team management, recruitment, trainings and field coordination',
+      'Successful ISO 9001 audit participation',
+    ],
+  },
+  {
+    role: 'Design & Development Engineer',
+    company: 'SANYO Hungary Kft.',
+    period: '2002 – 2005',
+    tasks: [
+      'Czech production plant relocation planning and execution',
+      'Mobile phone battery 3D design (Pro-Desktop, Solid Edge, Solid Works)',
+      'Rapid prototyping, mould design and testing',
+    ],
+  },
+  {
+    role: 'Linux System Administrator',
+    company: 'Pyro-Technik Kft.',
+    period: '2001 – 2002',
+    tasks: [
+      'SuSE and RedHat Linux server maintenance (kernel builds, services)',
+      'User registration and daily support',
+      'Fax server creation and operation',
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="container projects-page">
+    <h1>Portfolio</h1>
+    <p class="intro">My work experience at a glance.</p>
+
+    <div class="client-carousel">
+      <button class="carousel-btn carousel-prev" data-dir="-1" aria-label="Previous">&larr;</button>
+      <div class="carousel-track">
+        <span>MOL</span>
+        <span>E.ON</span>
+        <span>FlexLink</span>
+        <span>SANYO</span>
+        <span>Innobyte</span>
+        <span>Kienle+Spiess</span>
+        <span>Beck &amp; Pollitzer</span>
+        <span>OPUS TITÁSZ</span>
+        <span>MVM Next</span>
+        <span>Procter &amp; Gamble</span>
+        <span>MSD</span>
+        <span>EYEBIZ</span>
+        <span>NESTLÉ</span>
+        <span>MARS</span>
+        <span>PPF</span>
+        <span>Arnott's</span>
+      </div>
+      <button class="carousel-btn carousel-next" data-dir="1" aria-label="Next">&rarr;</button>
+    </div>
+
+    <div class="timeline">
+      {positions.map((pos) => (
+        <article class="position">
+          <div class="position-header">
+            <h2>{pos.role}</h2>
+            <p class="company">{pos.company}</p>
+            <p class="period">{pos.period}</p>
+          </div>
+          {pos.description && <p class="position-desc">{pos.description}</p>}
+          <ul>
+            {pos.tasks.map((task) => (
+              <li>{task}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .projects-page {
+    padding: var(--space-4xl) 0;
+    max-width: 800px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .intro {
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .client-carousel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding-bottom: var(--space-2xl);
+    margin-bottom: var(--space-3xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: var(--space-xl);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    flex: 1;
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    padding: var(--space-sm) 0;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-track span {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .carousel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition:
+      border-color var(--transition-fast),
+      color var(--transition-fast);
+  }
+
+  .carousel-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+
+  .position {
+    padding-bottom: var(--space-2xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .position:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .position-header {
+    margin-bottom: var(--space-md);
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .company {
+    font-weight: 500;
+    color: var(--color-accent);
+    font-size: 0.9375rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .period {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .position-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  li {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    padding-left: var(--space-md);
+    position: relative;
+  }
+
+  li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    document.querySelectorAll('.client-carousel').forEach(function (carousel) {
+      var track = carousel.querySelector('.carousel-track');
+      if (!track) return;
+      var items = Array.from(track.children);
+      items.forEach(function (item) { track.appendChild(item.cloneNode(true)); });
+      var singleWidth = 0;
+      var gap = parseFloat(getComputedStyle(track).gap) || 0;
+      items.forEach(function (item) { singleWidth += item.offsetWidth; });
+      singleWidth += gap * items.length;
+      track.scrollLeft = singleWidth;
+      track.addEventListener('scrollend', function () {
+        if (track.scrollLeft <= 0) {
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft = singleWidth;
+          track.style.scrollBehavior = 'smooth';
+        } else if (track.scrollLeft >= singleWidth * 2 - track.offsetWidth) {
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft = singleWidth + (track.scrollLeft - singleWidth * 2 + track.offsetWidth);
+          track.style.scrollBehavior = 'smooth';
+        }
+      });
+      carousel.querySelectorAll('.carousel-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var dir = parseInt(btn.getAttribute('data-dir'));
+          track.scrollBy({ left: dir * 250, behavior: 'smooth' });
+        });
+      });
+    });
+  })();
+</script>

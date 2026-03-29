@@ -1,0 +1,129 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  lang?: string;
+}
+
+const currentLocale = Astro.currentLocale || 'hu';
+
+const {
+  title,
+  description = currentLocale === 'en'
+    ? 'IT project management and AI integration — András Simon, Budapest'
+    : 'IT projekt menedzsment és AI integráció — Simon András, Budapest',
+  ogImage = '/images/og-default.webp',
+  lang = currentLocale,
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+// hreflang alternate URLs
+const pathWithoutLocale = currentLocale === 'en'
+  ? Astro.url.pathname.replace(/^\/en/, '') || '/'
+  : Astro.url.pathname;
+const huUrl = new URL(pathWithoutLocale, Astro.site);
+const enUrl = new URL(`/en${pathWithoutLocale === '/' ? '/' : pathWithoutLocale}`, Astro.site);
+
+// JSON-LD structured data
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'Simon Projects',
+      url: Astro.site?.toString(),
+      description: currentLocale === 'en'
+        ? 'Professional IT project management and AI integration'
+        : 'Professzionális IT projekt menedzsment és AI integráció',
+      inLanguage: [currentLocale],
+    },
+    {
+      '@type': 'Person',
+      name: 'Simon András',
+      jobTitle: currentLocale === 'en' ? 'IT Project Manager & AI Integrator' : 'IT Projekt Menedzser & AI Integrátor',
+      url: Astro.site?.toString(),
+      email: 'info@simonprojects.eu',
+      image: new URL('/images/profile.webp', Astro.site).toString(),
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Budapest',
+        addressCountry: 'HU',
+      },
+      sameAs: [],
+      knowsAbout: [
+        'IT Project Management',
+        'AI Integration',
+        'SAP',
+        'Digital Transformation',
+        'Agile',
+      ],
+    },
+  ],
+});
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content={currentLocale === 'en' ? 'en_US' : 'hu_HU'} />
+    <meta property="og:locale:alternate" content={currentLocale === 'en' ? 'hu_HU' : 'en_US'} />
+    <meta property="og:site_name" content="Simon Projects" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="hu" href={huUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={huUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={jsonLd} />
+
+    <!-- Dark mode init (no FOUC) -->
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark') document.documentElement.classList.add('dark');
+        else if (stored === 'light')
+          document.documentElement.classList.add('light');
+      })();
+    </script>
+  </head>
+  <body>
+    <Nav />
+    <slot />
+    <Footer />
+  </body>
+</html>
