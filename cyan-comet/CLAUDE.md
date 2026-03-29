@@ -1,49 +1,20 @@
-# simonprojects.eu — Claude Code munkautasítások
+# simonprojects.eu — Astro fejlesztési útmutató
 
 ## Projekt kontextus
 
-- **Cél:** A simonprojects.eu WordPress oldal kiváltása statikus site-tal
 - **Framework:** Astro 6.x (statikus site generator)
-- **Deploy:** Cloudflare Pages (auto-build minden `main` branch push után)
-- **Repo:** <https://github.com/hu1asn0/PW-refactor.git>
 - **Dev szerver:** `nohup npm run dev -- --host > ~/dev.log 2>&1 &`
 - **Élő preview:** <http://192.168.1.196:4321/>
+- **Deploy:** cPanel git pull a `deploy` branch-ből (részletek: `../CLAUDE.md`)
 
-## Tulajdonos
-
-- **Név:** Simon András
-- **Szerepkör:** IT Projekt Menedzser & AI Integrátor, Budapest
-- **Email:** <info@simonprojects.eu>
-
----
-
-## Fejlesztési szabályok
-
-### Kódolási konvenciók
+## Kódolási konvenciók
 
 - Magyar nyelvű tartalom, angol nyelvű kód (változónevek, fájlnevek)
-- Fájlnév: `kebab-case` (pl. `hero-section.astro`)
+- Fájlnév: `kebab-case` (pl. `hero-section.astro`), komponens: PascalCase (pl. `HeroSection.astro`)
 - CSS: scoped `<style>` Astro komponensekben; globális CSS → `src/styles/global.css`
 - Képek: WebP formátum, `public/images/` mappában
-- Nincs felesleges JS — Astro alapon csak statikus HTML/CSS, JS csak indokolt esetben
-- Reszponzív design: mobile-first, 320px–1440px
-
-### Commit konvenció
-
-```text
-feat: [mit adtál hozzá]
-fix: [mit javítottál]
-content: [tartalom változás]
-style: [csak CSS/design]
-chore: [config, dependency update]
-```
-
-### Git workflow
-
-- Minden változtatás után: `git add . && git commit && git push`
-- Paperclip agensek is commitolhatnak párhuzamosan → mindig `git pull` először!
-
----
+- Nincs felesleges JS — statikus HTML/CSS, JS csak indokolt esetben
+- Reszponzív: mobile-first, 375px–1440px
 
 ## Projekt struktúra
 
@@ -51,62 +22,37 @@ chore: [config, dependency update]
 cyan-comet/
 ├── src/
 │   ├── pages/          # .astro oldalak (route = fájlnév)
-│   ├── components/     # Újrafelhasználható komponensek
-│   ├── layouts/        # Alap Layout wrapper
-│   └── styles/         # Globális CSS
-├── public/             # Statikus assets (képek, favicon)
-├── dist/               # Build output (Cloudflare ezt deployal)
-├── astro.config.mjs
-├── package.json
-└── CLAUDE.md           # Ez a fájl
+│   │   └── en/         # Angol i18n oldalak
+│   ├── components/     # Nav, Footer, Card, HeroSection, DarkModeToggle
+│   ├── layouts/        # BaseLayout.astro
+│   └── styles/         # global.css (design tokenek, dark mode, reset)
+├── public/             # Statikus assets (képek, favicon, robots.txt)
+├── astro.config.mjs    # site URL, i18n, sitemap integráció
+└── package.json
 ```
 
-### Kötelező oldalak
+## Oldalak státusza
 
-| Oldal        | Fájl                       | Státusz     |
-| ------------ | -------------------------- | ----------- |
-| Főoldal      | `src/pages/index.astro`    | placeholder |
-| Bemutatkozás | `src/pages/about.astro`    | hiányzik    |
-| Projektek    | `src/pages/projects.astro` | hiányzik    |
-| Kapcsolat    | `src/pages/contact.astro`  | hiányzik    |
-| 404          | `src/pages/404.astro`      | hiányzik    |
+| Oldal | Fájl | HU | EN |
+| --- | --- | --- | --- |
+| Főoldal | `index.astro` | kész | kész |
+| Rólam | `about.astro` | kész | kész |
+| Portfólióm | `projects.astro` | kész | kész |
+| Elérhetőség | `contact.astro` | kész | kész |
+| 404 | `404.astro` | kész | — |
+| Impresszum | `impresszum.astro` | kész | — |
 
----
-
-## Cloudflare Pages deploy
-
-| Beállítás     | Érték                                                |
-| ------------- | ---------------------------------------------------- |
-| Build command | `npm run build`                                      |
-| Output dir    | `dist`                                               |
-| Custom domain | `simonprojects.eu`                                   |
-| Node.js       | 22+                                                  |
-| Build log     | Cloudflare Dashboard → Workers & Pages → pw-refactor |
-
----
-
-## Dizájn terv
+## Dizájn rendszer
 
 - **Betűtípus:** Inter (body) + Instrument Serif (display)
-- **Színpaletta:** meleg bézs háttér, teal akcentus (#01696f)
-- **Reszponzív:** mobile-first, 375px-tól
-- **Dark mode:** prefers-color-scheme + toggle
+- **Színpaletta:** meleg bézs háttér (`#f5f0eb`), teal akcentus (`#01696f`)
+- **Dark mode:** `.dark` class + `prefers-color-scheme` hibrid, localStorage
+- **Spacing:** CSS custom properties (`--space-xs` → `--space-5xl`)
+- **SEO:** JSON-LD, hreflang (hu/en), OG/Twitter meta, sitemap
 
----
+## i18n
 
-## Hibakezelés
-
-| Hiba | Megoldás |
-| --- | --- |
-| `npm run build` sikertelen | Hiányzó import vagy rossz frontmatter |
-| Cloudflare build failed | Build log a dashboardon; Node.js 22+ kell |
-| Git push rejected | `git pull --rebase origin main` |
-| 404 Cloudflare Pages-en | `dist/` mappa üres vagy rossz output dir |
-
----
-
-## Kapcsolódó rendszerek
-
-- **Paperclip orchestrátor:** <http://192.168.1.196:3000> (CEO, Frontend Dev, QA, Content agensek)
-- **CEO Board:** `hu1asn0/ceo-board` — architektúra döntésekhez
-- **Secrets:** `.env` fájl git-ignored, soha ne commitold!
+- Default locale: `hu` (prefix nélkül: `/about/`)
+- Angol: `/en/` prefix (`/en/about/`)
+- Nav-ban HU/EN toggle gomb
+- `astro.config.mjs`-ben `i18n` konfig
