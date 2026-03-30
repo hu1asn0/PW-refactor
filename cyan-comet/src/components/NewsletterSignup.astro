@@ -1,0 +1,112 @@
+---
+const isEn = (Astro.currentLocale || 'hu') === 'en';
+const publicationUrl = 'https://andrs-newsletter-366e2f.beehiiv.com/subscribe';
+---
+
+<section class="newsletter-signup">
+  <div class="newsletter-inner">
+    <h3>{isEn ? 'Stay in the loop' : 'Iratkozz fel a hírlevélre'}</h3>
+    <p>
+      {isEn
+        ? 'AI tips for project management — delivered to your inbox.'
+        : 'AI tippek projekt menedzsmenthez — közvetlenül a postaládádba.'}
+    </p>
+    <form action={publicationUrl} method="POST" class="signup-form">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder={isEn ? 'Your email address' : 'Email címed'}
+        aria-label={isEn ? 'Email address' : 'Email cím'}
+      />
+      <button type="submit">{isEn ? 'Subscribe' : 'Feliratkozás'}</button>
+    </form>
+    <p class="signup-note">
+      {isEn
+        ? 'No spam. Unsubscribe anytime.'
+        : 'Nincs spam. Bármikor leiratkozhatsz.'}
+    </p>
+  </div>
+</section>
+
+<style>
+  .newsletter-signup {
+    margin-top: var(--space-3xl);
+    padding: var(--space-2xl);
+    background-color: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .newsletter-inner {
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  .newsletter-signup h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .newsletter-signup > .newsletter-inner > p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .signup-form {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .signup-form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: border-color var(--transition-fast);
+  }
+
+  .signup-form input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .signup-form input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .signup-form button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color var(--transition-fast);
+  }
+
+  .signup-form button:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .signup-note {
+    margin-top: var(--space-sm);
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 480px) {
+    .signup-form {
+      flex-direction: column;
+    }
+  }
+</style>
