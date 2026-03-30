@@ -23,11 +23,14 @@ function parseItems(xml) {
 
   while ((match = itemRegex.exec(xml)) !== null) {
     const block = match[1];
+    const title = tag(block, 'title');
     items.push({
-      title: tag(block, 'title'),
+      title,
+      slug: slugify(title),
       link: tag(block, 'link'),
       pubDate: tag(block, 'pubDate'),
       description: stripHtml(tag(block, 'description')).slice(0, 200),
+      content: tag(block, 'content:encoded'),
       author: tag(block, 'dc:creator'),
       categories: allTags(block, 'category'),
       image: enclosureUrl(block),
@@ -61,6 +64,15 @@ function allTags(xml, name) {
 function enclosureUrl(xml) {
   const m = /url="([^"]+)"/.exec(/<enclosure[^>]+>/.exec(xml)?.[0] || '');
   return m ? m[1] : '';
+}
+
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/['']/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+    .slice(0, 80);
 }
 
 function stripHtml(html) {
