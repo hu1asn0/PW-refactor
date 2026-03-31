@@ -16,8 +16,8 @@ const description = 'Get in touch! IT project management and AI integration — 
     <div class="contact-grid">
       <div class="contact-item">
         <h2>Email</h2>
-        <a href="mailto:info@simonprojects.eu" class="contact-link">
-          info@simonprojects.eu
+        <a id="email-link" class="contact-link" href="#">
+          <span class="email-placeholder">Loading…</span>
         </a>
       </div>
 
@@ -27,9 +27,24 @@ const description = 'Get in touch! IT project management and AI integration — 
       </div>
     </div>
 
-    <a href="mailto:info@simonprojects.eu" class="cta-button">
+    <a id="cta-email" class="cta-button" href="#">
       Write to me
     </a>
+
+    <script>
+      const u = 'info';
+      const d = 'simonprojects.eu';
+      const addr = `${u}@${d}`;
+      const link = document.getElementById('email-link');
+      const cta = document.getElementById('cta-email');
+      if (link) {
+        link.href = `mailto:${addr}`;
+        link.textContent = addr;
+      }
+      if (cta) {
+        cta.href = `mailto:${addr}`;
+      }
+    </script>
   </main>
 </BaseLayout>
 

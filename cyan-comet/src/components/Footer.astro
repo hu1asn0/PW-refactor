@@ -7,11 +7,21 @@ const isEn = (Astro.currentLocale || 'hu') === 'en';
   <div class="container">
     <p>&copy; {year} Simon András e.v. — {isEn ? 'All rights reserved!' : 'Minden jog fenntartva!'}</p>
     <div class="footer-links">
-      <a href="mailto:info@simonprojects.eu">info@simonprojects.eu</a>
+      <a id="footer-email" href="#">…</a>
       <span class="separator">·</span>
       <a href="/impresszum/">{isEn ? 'Legal notice' : 'Impresszum'}</a>
     </div>
   </div>
+  <script>
+    const u = 'info';
+    const d = 'simonprojects.eu';
+    const addr = `${u}@${d}`;
+    const el = document.getElementById('footer-email');
+    if (el) {
+      el.href = `mailto:${addr}`;
+      el.textContent = addr;
+    }
+  </script>
 </footer>
 
 <style>
