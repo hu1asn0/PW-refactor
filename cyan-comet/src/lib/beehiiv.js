@@ -23,7 +23,8 @@ function parseItems(xml) {
 
   while ((match = itemRegex.exec(xml)) !== null) {
     const block = match[1];
-    const title = tag(block, 'title');
+    const rawTitle = tag(block, 'title');
+    const title = decodeEntities(rawTitle);
     items.push({
       title,
       slug: slugify(title),
@@ -75,8 +76,18 @@ function slugify(text) {
     .slice(0, 80);
 }
 
+function decodeEntities(text) {
+  const named = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&apos;': "'", '&nbsp;': ' ', '&#8203;': '' };
+  return text
+    .replace(/&(?:#(\d+)|#x([0-9a-fA-F]+)|(\w+));/g, (match, dec, hex, name) => {
+      if (dec) return String.fromCharCode(parseInt(dec, 10));
+      if (hex) return String.fromCharCode(parseInt(hex, 16));
+      return named[`&${name};`] || match;
+    });
+}
+
 function stripHtml(html) {
-  return html.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#8203;/g, '').replace(/\s+/g, ' ').trim();
+  return decodeEntities(html.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
 }
 
 export function formatDate(dateStr, locale = 'hu') {
