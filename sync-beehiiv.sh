@@ -12,12 +12,16 @@ export NVM_DIR="$HOME/.nvm"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOG"; }
 
+# Netdata monitoring
+_CRON_START=$(date +%s)
+trap 'echo "cron_exit.beehiiv_sync:$?|g" | nc -u -w0 127.0.0.1 8125 2>/dev/null; echo "cron_time.beehiiv_sync:$(( $(date +%s) - _CRON_START ))|g" | nc -u -w0 127.0.0.1 8125 2>/dev/null' EXIT
+
 log "=== Beehiiv sync started ==="
 
 # Step 1: Build
 cd "$ASTRO_DIR"
 log "Building Astro site..."
-if npx astro build >> "$LOG" 2>&1; then
+if npm run build >> "$LOG" 2>&1; then
     PAGE_COUNT=$(find dist -name '*.html' | wc -l)
     log "Build OK — $PAGE_COUNT pages"
 else
