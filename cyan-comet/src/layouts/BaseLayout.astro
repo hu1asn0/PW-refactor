@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -104,9 +105,13 @@ const jsonLd = JSON.stringify({
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet" />
 
     <link rel="canonical" href={canonicalUrl} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- View Transitions -->
+    <ClientRouter />
 
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={jsonLd} />
@@ -114,10 +119,27 @@ const jsonLd = JSON.stringify({
     <!-- Dark mode init (no FOUC) -->
     <script is:inline>
       (function () {
-        var stored = localStorage.getItem('theme');
-        if (stored === 'dark') document.documentElement.classList.add('dark');
-        else if (stored === 'light')
-          document.documentElement.classList.add('light');
+        function applyTheme() {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+          } else if (stored === 'light') {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+          }
+        }
+        applyTheme();
+        document.addEventListener('astro:before-swap', function (e) {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'dark') {
+            e.newDocument.documentElement.classList.add('dark');
+            e.newDocument.documentElement.classList.remove('light');
+          } else if (stored === 'light') {
+            e.newDocument.documentElement.classList.add('light');
+            e.newDocument.documentElement.classList.remove('dark');
+          }
+        });
       })();
     </script>
   </head>
@@ -125,5 +147,27 @@ const jsonLd = JSON.stringify({
     <Nav />
     <slot />
     <Footer />
+
+    <!-- Global scroll animations -->
+    <script>
+      function initScrollAnimations() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+          observer.observe(el);
+        });
+      }
+      initScrollAnimations();
+      document.addEventListener('astro:after-swap', initScrollAnimations);
+    </script>
   </body>
 </html>

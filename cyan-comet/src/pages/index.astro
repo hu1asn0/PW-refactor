@@ -12,170 +12,240 @@ const services = [
     title: 'Projekt Menedzsment',
     description:
       'Teljeskörű IT és műszaki projekt menedzsment — a tervezéstől a sikeres lezárásig.',
+    icon: 'clipboard-list',
   },
   {
     title: 'Tervezés',
     description:
       'Igényfelmérés, terjedelem-, időbeli lefutás- és költségvetési terv készítése, projekt szervezet és metodológia strukturálása, kommunikációs stratégia kidolgozása.',
+    icon: 'compass',
   },
   {
     title: 'Kivitelezés',
     description:
       'A projekt minden aspektusának irányítása, beleértve a csapattagokat, az alkalmazottakat és a szállítókat. A költségvetés és az ütemterv betartása.',
+    icon: 'settings',
   },
   {
     title: 'Monitorozás',
     description:
       'Riportok és jelentések kialakítása a projekt előrehaladásáról. KPI-ok figyelemmel kísérése, egyéni igények szerinti riportálás.',
+    icon: 'bar-chart',
   },
   {
     title: 'Tanácsadás',
     description:
       'Metodika- és folyamatelemzés, egyéni és csoportos konzultációk. AI eszközök beillesztése a meglévő munkafolyamatokba.',
+    icon: 'lightbulb',
   },
   {
     title: 'Képzések és oktatások',
     description:
       'Egyéni és csoportos tréningek, döntéshozók és kulcsszereplők képzése új folyamatokról vagy rendszerekről.',
+    icon: 'users',
   },
 ];
+
+const clients = ['MOL', 'E.ON', 'FlexLink', 'SANYO', 'Innobyte', 'Kienle+Spiess', 'Beck & Pollitzer', 'OPUS TITÁSZ', 'MVM Next', 'Procter & Gamble', 'MSD', 'EYEBIZ', 'NESTLÉ', 'MARS', 'PPF', "Arnott's"];
 ---
 
 <BaseLayout title={title} description={description}>
   <main>
     <HeroSection
       title="A hatékony partner a projektek világában"
+      highlightWord="projektek"
       subtitle="Legyen tervezési, kivitelezési fázisban a projekt, vagy éppen egy projektmentési munkára van szükség — kész megoldásokkal segítek minden partneremnek."
       ctaText="Portfólióm megtekintése"
       ctaHref="/projects/"
+      ctaSecondaryText="Kapcsolat"
+      ctaSecondaryHref="/contact/"
+      badgeText="Elérhető új projektekre"
     />
 
-    <section class="client-carousel-section">
+    <!-- Stats Bar -->
+    <section class="stats-bar">
       <div class="container">
-        <div class="client-carousel">
-          <button class="carousel-btn carousel-prev" data-dir="-1" aria-label="Előző">&larr;</button>
-          <div class="carousel-track">
-            <span>MOL</span>
-            <span>E.ON</span>
-            <span>FlexLink</span>
-            <span>SANYO</span>
-            <span>Innobyte</span>
-            <span>Kienle+Spiess</span>
-            <span>Beck &amp; Pollitzer</span>
-            <span>OPUS TITÁSZ</span>
-            <span>MVM Next</span>
-            <span>Procter &amp; Gamble</span>
-            <span>MSD</span>
-            <span>EYEBIZ</span>
-            <span>NESTLÉ</span>
-            <span>MARS</span>
-            <span>PPF</span>
-            <span>Arnott's</span>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Év tapasztalat</span>
           </div>
-          <button class="carousel-btn carousel-next" data-dir="1" aria-label="Következő">&rarr;</button>
+          <div class="stat-item">
+            <span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Lezárt projekt</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="16">0</span>
+            <span class="stat-label">Iparági partner</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="5">0</span>
+            <span class="stat-label">Ország</span>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Client Logo Marquee -->
+    <section class="marquee-section">
+      <div class="marquee-track">
+        {[...clients, ...clients].map((name) => (
+          <span class="marquee-item">{name}</span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Services -->
     <section class="services">
       <div class="container">
-        <h2>Szolgáltatásaink</h2>
+        <h2 class="animate-on-scroll">Szolgáltatásaink</h2>
         <div class="services-grid">
-          {services.map((service) => (
-            <Card title={service.title} description={service.description} />
+          {services.map((service, i) => (
+            <div class="animate-on-scroll" style={`transition-delay: ${i * 100}ms`}>
+              <Card title={service.title} description={service.description} icon={service.icon} />
+            </div>
           ))}
         </div>
       </div>
     </section>
 
+    <!-- Testimonial -->
     <section class="testimonial">
       <div class="container">
-        <blockquote>
-          <p>
-            "Thanks for everything, I really liked working with you: even if you were an IT project manager, you fully captured the most important business points of the project, did not get lost in technical details, still you wanted to understand the main targets of the project and drive the whole story to the right way in line with the key stakeholders' expectations. You really stood out considering my previous experiences."
-          </p>
-          <footer>
-            <cite>Gerebenics Máté</cite>
-            <span>MOL Magyarország Kft.</span>
-          </footer>
-        </blockquote>
+        <div class="testimonial-inner animate-on-scroll">
+          <div class="quote-mark" aria-hidden="true">"</div>
+          <blockquote>
+            <div class="stars">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p>
+              Thanks for everything, I really liked working with you: even if you were an IT project manager, you fully captured the most important business points of the project, did not get lost in technical details, still you wanted to understand the main targets of the project and drive the whole story to the right way in line with the key stakeholders' expectations. You really stood out considering my previous experiences.
+            </p>
+            <footer>
+              <cite>Gerebenics Máté</cite>
+              <span>MOL Magyarország Kft.</span>
+            </footer>
+          </blockquote>
+        </div>
       </div>
     </section>
 
-    <section class="contact-teaser">
+    <!-- Contact CTA -->
+    <section class="contact-cta">
       <div class="container">
-        <h2>Dolgozzunk együtt</h2>
-        <p>
-          Nyitott vagyok új projektekre és együttműködésekre.
-          Ha érdekel, hogyan segíthetek, keress bátran.
-        </p>
-        <a href="/contact/" class="cta-link">Kapcsolat &rarr;</a>
+        <div class="cta-card animate-on-scroll">
+          <h2>Dolgozzunk együtt</h2>
+          <p>
+            Nyitott vagyok új projektekre és együttműködésekre.
+            Ha érdekel, hogyan segíthetek, keress bátran.
+          </p>
+          <a href="/contact/" class="cta-button">Kapcsolat</a>
+        </div>
       </div>
     </section>
   </main>
 </BaseLayout>
 
 <style>
-  .client-carousel-section {
-    padding-bottom: var(--space-3xl);
+  /* ===== STATS BAR ===== */
+  .stats-bar {
+    background: var(--color-bg);
+    padding: var(--space-2xl) 0;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .client-carousel {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-  }
-
-  .carousel-track {
-    display: flex;
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-xl);
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    flex: 1;
-    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-    padding: var(--space-sm) 0;
+    text-align: center;
   }
 
-  .carousel-track::-webkit-scrollbar {
-    display: none;
+  .stat-item {
+    position: relative;
   }
 
-  .carousel-track span {
+  .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+  }
+
+  .stat-suffix {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-top: var(--space-xs);
+  }
+
+  /* ===== MARQUEE ===== */
+  .marquee-section {
+    padding: var(--space-xl) 0;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: var(--space-3xl);
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-section:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
     font-family: var(--font-display);
     font-size: 1.125rem;
+    font-weight: 500;
     color: var(--color-text-muted);
-    letter-spacing: -0.01em;
     white-space: nowrap;
     flex-shrink: 0;
+    opacity: 0.45;
+    filter: grayscale(1);
+    transition: opacity 0.3s ease, filter 0.3s ease;
   }
 
-  .carousel-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-    color: var(--color-text-muted);
-    font-size: 1rem;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition:
-      border-color var(--transition-fast),
-      color var(--transition-fast);
+  .marquee-item:hover {
+    opacity: 1;
+    filter: grayscale(0);
   }
 
-  .carousel-btn:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-
+  /* ===== SERVICES ===== */
   .services {
     padding: var(--space-4xl) 0;
+    background: var(--color-bg-alt);
   }
 
   .services h2 {
@@ -189,30 +259,50 @@ const services = [
     gap: var(--space-lg);
   }
 
+  /* ===== TESTIMONIAL ===== */
   .testimonial {
-    padding: var(--space-5xl) 0;
-    margin: var(--space-4xl) 0;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    background-color: var(--color-bg-alt);
+    background: #0f172a;
+    border-top: 3px solid var(--accent);
+    padding: var(--space-4xl) 0;
+  }
+
+  .testimonial-inner {
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+    position: relative;
+  }
+
+  .quote-mark {
+    font-family: var(--font-display);
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    opacity: 0.3;
+    margin-bottom: -2rem;
+  }
+
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: var(--space-lg);
   }
 
   blockquote {
-    max-width: 680px;
-    margin-inline: auto;
-    text-align: center;
     border: none;
     padding: 0;
+    margin: 0;
     background: none;
   }
 
   blockquote p {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+    font-size: clamp(1.0625rem, 2vw, 1.25rem);
     line-height: 1.9;
-    color: var(--color-text);
+    color: rgba(255, 255, 255, 0.75);
     margin-bottom: var(--space-xl);
+    font-style: italic;
   }
 
   blockquote footer {
@@ -222,81 +312,129 @@ const services = [
   }
 
   blockquote cite {
-    font-family: var(--font-body);
     font-style: normal;
-    font-weight: 600;
-    font-size: 0.9375rem;
-    color: var(--color-text);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
   }
 
   blockquote footer span {
-    font-size: 0.8125rem;
-    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.02em;
   }
 
-  .contact-teaser {
+  /* ===== CONTACT CTA ===== */
+  .contact-cta {
     padding: var(--space-4xl) 0;
-    text-align: center;
+    background: var(--color-bg-alt);
   }
 
-  .contact-teaser h2 {
+  .cta-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    padding: var(--space-3xl) var(--space-2xl);
+    text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  :global(.dark) .cta-card {
+    background: rgba(30, 41, 59, 0.95);
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .cta-card h2 {
     font-size: clamp(1.5rem, 3vw, 2.25rem);
     margin-bottom: var(--space-lg);
   }
 
-  .contact-teaser p {
+  .cta-card p {
     color: var(--color-text-muted);
     font-size: 1.0625rem;
-    max-width: 500px;
+    max-width: 460px;
     margin-inline: auto;
     margin-bottom: var(--space-xl);
     line-height: 1.7;
   }
 
-  .cta-link {
-    font-weight: 600;
-    font-size: 1.0625rem;
+  .cta-button {
+    display: inline-block;
+    background: #f59e0b;
+    color: #0f172a;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: filter 0.25s ease, transform 0.25s ease;
+    text-decoration: none;
+  }
+
+  .cta-button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    color: #0f172a;
+    text-decoration: none;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .stat-item:nth-child(2)::after {
+      display: none;
+    }
+
+    .stat-item:not(:last-child)::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>
 
-<script is:inline>
-  (function () {
-    document.querySelectorAll('.client-carousel').forEach(function (carousel) {
-      var track = carousel.querySelector('.carousel-track');
-      if (!track) return;
-
-      var items = Array.from(track.children);
-      items.forEach(function (item) {
-        track.appendChild(item.cloneNode(true));
-      });
-
-      var singleWidth = 0;
-      var gap = parseFloat(getComputedStyle(track).gap) || 0;
-      items.forEach(function (item) {
-        singleWidth += item.offsetWidth;
-      });
-      singleWidth += gap * items.length;
-      track.scrollLeft = singleWidth;
-
-      track.addEventListener('scrollend', function () {
-        if (track.scrollLeft <= 0) {
-          track.style.scrollBehavior = 'auto';
-          track.scrollLeft = singleWidth;
-          track.style.scrollBehavior = 'smooth';
-        } else if (track.scrollLeft >= singleWidth * 2 - track.offsetWidth) {
-          track.style.scrollBehavior = 'auto';
-          track.scrollLeft = singleWidth + (track.scrollLeft - singleWidth * 2 + track.offsetWidth);
-          track.style.scrollBehavior = 'smooth';
-        }
-      });
-
-      carousel.querySelectorAll('.carousel-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var dir = parseInt(btn.getAttribute('data-dir'));
-          track.scrollBy({ left: dir * 250, behavior: 'smooth' });
+<script>
+  // CountUp animation for stat numbers (scroll animations handled globally in BaseLayout)
+  function initCountUp() {
+    const statObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = parseInt(el.dataset.target || '0', 10);
+            let current = 0;
+            const duration = 1500;
+            const step = target / (duration / 16);
+            const counter = setInterval(() => {
+              current += step;
+              if (current >= target) {
+                current = target;
+                clearInterval(counter);
+              }
+              el.textContent = Math.floor(current).toString();
+            }, 16);
+            statObserver.unobserve(el);
+          }
         });
-      });
+      },
+      { threshold: 0.5 }
+    );
+
+    document.querySelectorAll('.stat-number[data-target]').forEach((el) => {
+      statObserver.observe(el);
     });
-  })();
+  }
+
+  initCountUp();
+  document.addEventListener('astro:after-swap', initCountUp);
 </script>

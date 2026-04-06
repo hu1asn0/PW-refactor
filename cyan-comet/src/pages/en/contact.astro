@@ -6,44 +6,58 @@ const description = 'Get in touch! IT project management and AI integration — 
 ---
 
 <BaseLayout title={title} description={description}>
-  <main class="container contact-page">
-    <h1>Contact</h1>
-    <p class="intro">
-      I'm open to new projects and collaborations.
-      Don't hesitate to reach out!
-    </p>
+  <main class="contact-page">
+    <div class="container">
+      <div class="contact-card animate-on-scroll">
+        <h1>Contact</h1>
+        <p class="intro">
+          I'm open to new projects and collaborations.
+          Don't hesitate to reach out!
+        </p>
 
-    <div class="contact-grid">
-      <div class="contact-item">
-        <h2>Email</h2>
-        <a id="email-link" class="contact-link" href="#">
-          <span class="email-placeholder">Loading…</span>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <h2>Email</h2>
+            <a id="email-link" class="contact-link" href="#">
+              <span class="email-placeholder">Loading...</span>
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h2>Location</h2>
+            <p>Budapest, Hungary</p>
+          </div>
+        </div>
+
+        <a id="cta-email" class="cta-button" href="#">
+          Write to me
         </a>
-      </div>
-
-      <div class="contact-item">
-        <h2>Location</h2>
-        <p>Budapest, Hungary</p>
       </div>
     </div>
 
-    <a id="cta-email" class="cta-button" href="#">
-      Write to me
-    </a>
-
     <script>
-      const u = 'info';
-      const d = 'simonprojects.eu';
-      const addr = `${u}@${d}`;
-      const link = document.getElementById('email-link');
-      const cta = document.getElementById('cta-email');
-      if (link) {
-        link.href = `mailto:${addr}`;
-        link.textContent = addr;
+      function initContactEmail() {
+        const u = 'info';
+        const d = 'simonprojects.eu';
+        const addr = `${u}@${d}`;
+        const link = document.getElementById('email-link');
+        const cta = document.getElementById('cta-email');
+        if (link) {
+          (link as HTMLAnchorElement).href = `mailto:${addr}`;
+          link.textContent = addr;
+        }
+        if (cta) {
+          (cta as HTMLAnchorElement).href = `mailto:${addr}`;
+        }
       }
-      if (cta) {
-        cta.href = `mailto:${addr}`;
-      }
+      initContactEmail();
+      document.addEventListener('astro:after-swap', initContactEmail);
     </script>
   </main>
 </BaseLayout>
@@ -51,7 +65,26 @@ const description = 'Get in touch! IT project management and AI integration — 
 <style>
   .contact-page {
     padding: var(--space-4xl) 0;
+    background: var(--color-bg-alt);
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    padding: var(--space-3xl) var(--space-2xl);
     text-align: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  :global(.dark) .contact-card {
+    background: rgba(30, 41, 59, 0.95);
+    border-top-color: rgba(255, 255, 255, 0.1);
   }
 
   h1 {
@@ -63,7 +96,7 @@ const description = 'Get in touch! IT project management and AI integration — 
     color: var(--color-text-muted);
     max-width: 500px;
     margin-inline: auto;
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-2xl);
     font-size: 1.0625rem;
     line-height: 1.7;
   }
@@ -74,14 +107,27 @@ const description = 'Get in touch! IT project management and AI integration — 
     gap: var(--space-xl);
     max-width: 500px;
     margin-inline: auto;
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-2xl);
     text-align: center;
   }
 
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    margin-bottom: var(--space-sm);
+  }
+
   .contact-item h2 {
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-family: var(--font-body);
-    font-weight: 600;
+    font-weight: 500;
     color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -100,21 +146,21 @@ const description = 'Get in touch! IT project management and AI integration — 
 
   .cta-button {
     display: inline-block;
-    background-color: var(--color-accent);
-    color: #ffffff;
-    padding: var(--space-sm) var(--space-xl);
+    background: #f59e0b;
+    color: #0f172a;
+    padding: 0.75rem 2rem;
     border-radius: var(--radius-md);
-    font-weight: 600;
-    font-size: 0.9375rem;
-    transition:
-      background-color var(--transition-fast),
-      transform var(--transition-fast);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: filter 0.25s ease, transform 0.25s ease;
+    text-decoration: none;
   }
 
   .cta-button:hover {
-    background-color: var(--color-accent-hover);
-    color: #ffffff;
-    transform: translateY(-1px);
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    color: #0f172a;
     text-decoration: none;
   }
 </style>

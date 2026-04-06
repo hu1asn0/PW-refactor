@@ -7,20 +7,24 @@ const isEn = (Astro.currentLocale || 'hu') === 'en';
   <div class="container">
     <p>&copy; {year} Simon András e.v. — {isEn ? 'All rights reserved!' : 'Minden jog fenntartva!'}</p>
     <div class="footer-links">
-      <a id="footer-email" href="#">…</a>
-      <span class="separator">·</span>
+      <a id="footer-email" href="#">...</a>
+      <span class="separator">&middot;</span>
       <a href="/impresszum/">{isEn ? 'Legal notice' : 'Impresszum'}</a>
     </div>
   </div>
   <script>
-    const u = 'info';
-    const d = 'simonprojects.eu';
-    const addr = `${u}@${d}`;
-    const el = document.getElementById('footer-email');
-    if (el) {
-      el.href = `mailto:${addr}`;
-      el.textContent = addr;
+    function initFooterEmail() {
+      const u = 'info';
+      const d = 'simonprojects.eu';
+      const addr = `${u}@${d}`;
+      const el = document.getElementById('footer-email');
+      if (el) {
+        (el as HTMLAnchorElement).href = `mailto:${addr}`;
+        el.textContent = addr;
+      }
     }
+    initFooterEmail();
+    document.addEventListener('astro:after-swap', initFooterEmail);
   </script>
 </footer>
 
@@ -28,8 +32,9 @@ const isEn = (Astro.currentLocale || 'hu') === 'en';
   .site-footer {
     border-top: 1px solid var(--color-border);
     padding: var(--space-xl) 0;
-    margin-top: var(--space-4xl);
+    margin-top: 0;
     text-align: center;
+    background: var(--color-bg);
   }
 
   .site-footer p {

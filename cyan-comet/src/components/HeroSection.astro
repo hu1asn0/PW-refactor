@@ -1,59 +1,272 @@
 ---
 interface Props {
   title: string;
+  highlightWord?: string;
   subtitle: string;
   ctaText: string;
   ctaHref: string;
+  ctaSecondaryText?: string;
+  ctaSecondaryHref?: string;
+  badgeText?: string;
 }
 
-const { title, subtitle, ctaText, ctaHref } = Astro.props;
+const {
+  title,
+  highlightWord,
+  subtitle,
+  ctaText,
+  ctaHref,
+  ctaSecondaryText,
+  ctaSecondaryHref,
+  badgeText,
+} = Astro.props;
+
+// Split title around highlight word if provided
+let titleParts: { before: string; highlight: string; after: string } | null = null;
+if (highlightWord && title.includes(highlightWord)) {
+  const idx = title.indexOf(highlightWord);
+  titleParts = {
+    before: title.slice(0, idx),
+    highlight: highlightWord,
+    after: title.slice(idx + highlightWord.length),
+  };
+}
 ---
 
 <section class="hero">
-  <div class="container">
-    <h1>{title}</h1>
-    <p class="hero-subtitle">{subtitle}</p>
-    <a href={ctaHref} class="hero-cta">{ctaText}</a>
+  <!-- Animated grid background -->
+  <div class="hero-grid"></div>
+
+  <!-- Floating glow blobs -->
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+
+  <div class="container hero-content">
+    {badgeText && (
+      <div class="hero-badge animate-hero" style="animation-delay: 0.1s">
+        <span class="badge-dot"></span>
+        {badgeText}
+      </div>
+    )}
+
+    <h1 class="animate-hero" style="animation-delay: 0.2s">
+      {titleParts ? (
+        <>
+          {titleParts.before}<span class="highlight">{titleParts.highlight}</span>{titleParts.after}
+        </>
+      ) : (
+        title
+      )}
+    </h1>
+
+    <p class="hero-subtitle animate-hero" style="animation-delay: 0.4s">{subtitle}</p>
+
+    <div class="hero-actions animate-hero" style="animation-delay: 0.6s">
+      <a href={ctaHref} class="hero-cta-primary">{ctaText}</a>
+      {ctaSecondaryText && ctaSecondaryHref && (
+        <a href={ctaSecondaryHref} class="hero-cta-secondary">{ctaSecondaryText}</a>
+      )}
+    </div>
   </div>
 </section>
 
 <style>
   .hero {
-    padding: var(--space-5xl) 0 var(--space-4xl);
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f172a, #1a2744);
+    overflow: hidden;
+    margin-top: calc(-1 * var(--nav-height));
+    padding-top: var(--nav-height);
   }
 
-  h1 {
-    font-size: clamp(2.5rem, 5.5vw, 4rem);
-    margin-bottom: var(--space-xl);
-    max-width: 720px;
+  /* Animated dot/line grid */
+  .hero-grid {
+    position: absolute;
+    inset: -60px;
+    background-image:
+      linear-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridDrift 25s linear infinite;
+    pointer-events: none;
   }
 
-  .hero-subtitle {
-    font-size: clamp(1.0625rem, 1.8vw, 1.1875rem);
-    color: var(--color-text-muted);
-    max-width: 540px;
-    margin-bottom: var(--space-2xl);
-    line-height: 1.8;
+  /* Floating glow blobs */
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
   }
 
-  .hero-cta {
-    display: inline-block;
-    background-color: var(--color-accent);
-    color: #ffffff;
-    padding: 0.625rem var(--space-xl);
-    border-radius: var(--radius-md);
-    font-weight: 500;
+  .hero-blob-1 {
+    width: 400px;
+    height: 400px;
+    background: #10b981;
+    opacity: 0.08;
+    top: 10%;
+    left: 5%;
+    animation: float 20s ease-in-out infinite;
+    animation-delay: 0s;
+  }
+
+  .hero-blob-2 {
+    width: 300px;
+    height: 300px;
+    background: #f59e0b;
+    opacity: 0.06;
+    bottom: 10%;
+    right: 10%;
+    animation: float 22s ease-in-out infinite;
+    animation-delay: -7s;
+  }
+
+  .hero-blob-3 {
+    width: 250px;
+    height: 250px;
+    background: #34d399;
+    opacity: 0.07;
+    bottom: 30%;
+    left: 30%;
+    animation: float 25s ease-in-out infinite;
+    animation-delay: -14s;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+    padding-block: var(--space-4xl);
+  }
+
+  /* Badge */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    padding: 0.5rem 1.25rem;
     font-size: 0.875rem;
-    letter-spacing: 0.01em;
-    transition:
-      background-color var(--transition-base),
-      box-shadow var(--transition-base);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: var(--space-xl);
   }
 
-  .hero-cta:hover {
-    background-color: var(--color-accent-hover);
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  /* Heading */
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
     color: #ffffff;
-    box-shadow: 0 2px 12px rgba(1, 105, 111, 0.2);
+    line-height: 1.1;
+    margin-bottom: var(--space-xl);
+    letter-spacing: -0.03em;
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, #34d399, #a3e635);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Subtitle */
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 620px;
+    margin-inline: auto;
+    margin-bottom: var(--space-2xl);
+    line-height: 1.7;
+  }
+
+  /* CTAs */
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .hero-cta-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: #ffffff;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     text-decoration: none;
+  }
+
+  .hero-cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.5);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .hero-cta-secondary {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background 0.25s ease, border-color 0.25s ease;
+    text-decoration: none;
+  }
+
+  .hero-cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  /* Staggered fade-in-up */
+  .animate-hero {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeInUp 0.7s ease forwards;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding-block: var(--space-3xl);
+      padding-top: calc(var(--nav-height) + var(--space-3xl));
+    }
+
+    .hero-content {
+      padding-block: var(--space-2xl);
+    }
+
+    .hero-blob-1 { width: 200px; height: 200px; }
+    .hero-blob-2 { width: 150px; height: 150px; }
+    .hero-blob-3 { width: 120px; height: 120px; }
   }
 </style>

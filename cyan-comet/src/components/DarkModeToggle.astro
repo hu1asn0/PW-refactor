@@ -60,11 +60,14 @@
   }
 </style>
 
-<script is:inline>
-  (function () {
-    const toggle = document.querySelector('[data-theme-toggle]');
-    if (!toggle) return;
-    toggle.addEventListener('click', function () {
+<script>
+  let themeController: AbortController | undefined;
+  function initThemeToggle() {
+    themeController?.abort();
+    themeController = new AbortController();
+    document.addEventListener('click', function (e) {
+      const btn = (e.target as HTMLElement).closest('[data-theme-toggle]');
+      if (!btn) return;
       const html = document.documentElement;
       const isDark =
         html.classList.contains('dark') ||
@@ -79,6 +82,8 @@
         html.classList.add('dark');
         localStorage.setItem('theme', 'dark');
       }
-    });
-  })();
+    }, { signal: themeController.signal });
+  }
+  initThemeToggle();
+  document.addEventListener('astro:after-swap', initThemeToggle);
 </script>
