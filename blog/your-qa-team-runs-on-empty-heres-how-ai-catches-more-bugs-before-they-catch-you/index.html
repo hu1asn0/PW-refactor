@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="hu"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Your QA Team Runs on Empty — Here&#39;s How AI Catches More Bugs Before They Catch You</title><meta name="description" content="Quality Assurance Automation with AI: Test Strategy, Bug Prioritization, and Coverage Analysis Step by Step"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="Your QA Team Runs on Empty — Here's How AI Catches More Bugs Before They Catch You"><meta property="og:description" content="Quality Assurance Automation with AI: Test Strategy, Bug Prioritization, and Coverage Analysis Step by Step"><meta property="og:url" content="https://simonprojects.eu/blog/your-qa-team-runs-on-empty-heres-how-ai-catches-more-bugs-before-they-catch-you/"><meta property="og:image" content="https://simonprojects.eu/images/og-default.webp"><meta property="og:locale" content="hu_HU"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="Simon Projects"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Your QA Team Runs on Empty — Here's How AI Catches More Bugs Before They Catch You"><meta name="twitter:description" content="Quality Assurance Automation with AI: Test Strategy, Bug Prioritization, and Coverage Analysis Step by Step"><meta name="twitter:image" content="https://simonprojects.eu/images/og-default.webp"><!-- hreflang --><link rel="alternate" hreflang="hu" href="https://simonprojects.eu/blog/your-qa-team-runs-on-empty-heres-how-ai-catches-more-bugs-before-they-catch-you/"><link rel="alternate" hreflang="en" href="https://simonprojects.eu/en/blog/your-qa-team-runs-on-empty-heres-how-ai-catches-more-bugs-before-they-catch-you/"><link rel="alternate" hreflang="x-default" href="https://simonprojects.eu/blog/your-qa-team-runs-on-empty-heres-how-ai-catches-more-bugs-before-they-catch-you/"><!-- Favicon --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet"><link rel="canonical" href="https://simonprojects.eu/blog/your-qa-team-runs-on-empty-heres-how-ai-catches-more-bugs-before-they-catch-you/"><meta name="generator" content="Astro v6.1.1"><!-- View Transitions --><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.j56hQv-j.js"></script><!-- Structured Data --><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Simon Projects","url":"https://simonprojects.eu/","description":"Professzionális IT projekt menedzsment és AI integráció","inLanguage":["hu"]},{"@type":"Person","name":"Simon András","jobTitle":"IT Projekt Menedzser & AI Integrátor","url":"https://simonprojects.eu/","email":"info@simonprojects.eu","image":"https://simonprojects.eu/images/profile.webp","address":{"@type":"PostalAddress","addressLocality":"Budapest","addressCountry":"HU"},"sameAs":[],"knowsAbout":["IT Project Management","AI Integration","SAP","Digital Transformation","Agile"]}]}</script><!-- Dark mode init (no FOUC) --><script>
+      (function () {
+        function applyTheme() {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+          } else if (stored === 'light') {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+          }
+        }
+        applyTheme();
+        document.addEventListener('astro:before-swap', function (e) {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'dark') {
+            e.newDocument.documentElement.classList.add('dark');
+            e.newDocument.documentElement.classList.remove('light');
+          } else if (stored === 'light') {
+            e.newDocument.documentElement.classList.add('light');
+            e.newDocument.documentElement.classList.remove('dark');
+          }
+        });
+      })();
+    </script><style>.newsletter-signup[data-astro-cid-bfbmamsi]{margin-top:var(--space-3xl);padding:var(--space-2xl);background-color:var(--color-bg-alt);border-radius:var(--radius-lg);text-align:center}.newsletter-inner[data-astro-cid-bfbmamsi]{max-width:480px;margin-inline:auto}.newsletter-signup[data-astro-cid-bfbmamsi] h3[data-astro-cid-bfbmamsi]{font-size:1.5rem;margin-bottom:var(--space-sm)}.newsletter-signup[data-astro-cid-bfbmamsi]>.newsletter-inner[data-astro-cid-bfbmamsi]>p[data-astro-cid-bfbmamsi]{color:var(--color-text-muted);font-size:.95rem;margin-bottom:var(--space-lg)}.signup-form[data-astro-cid-bfbmamsi]{display:flex;gap:var(--space-sm)}.signup-form[data-astro-cid-bfbmamsi] input[data-astro-cid-bfbmamsi]{flex:1;padding:.75rem 1rem;border:1px solid var(--color-border);border-radius:var(--radius-md);background-color:var(--color-surface);color:var(--color-text);font-family:var(--font-body);font-size:.9rem;transition:border-color var(--transition-fast)}.signup-form[data-astro-cid-bfbmamsi] input[data-astro-cid-bfbmamsi]:focus{outline:none;border-color:var(--color-accent)}.signup-form[data-astro-cid-bfbmamsi] input[data-astro-cid-bfbmamsi]::placeholder{color:var(--color-text-muted)}.signup-form[data-astro-cid-bfbmamsi] button[data-astro-cid-bfbmamsi]{padding:.75rem 1.5rem;background-color:var(--color-accent);color:#fff;border:none;border-radius:var(--radius-md);font-family:var(--font-body);font-size:.9rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background-color var(--transition-fast)}.signup-form[data-astro-cid-bfbmamsi] button[data-astro-cid-bfbmamsi]:hover{background-color:var(--color-accent-hover)}.signup-note[data-astro-cid-bfbmamsi]{margin-top:var(--space-sm);font-size:.78rem;color:var(--color-text-muted)}@media(max-width:480px){.signup-form[data-astro-cid-bfbmamsi]{flex-direction:column}}
+</style>
+<link rel="stylesheet" href="/_astro/BaseLayout.CYDH4LqJ.css">
+<style>.post-article[data-astro-cid-4sn4zg3r]{padding-bottom:var(--space-3xl)}.back-link[data-astro-cid-4sn4zg3r]{display:inline-block;margin-top:var(--space-2xl);margin-bottom:var(--space-xl);font-size:.88rem;color:var(--color-text-muted)}.back-link[data-astro-cid-4sn4zg3r]:hover{color:var(--color-accent)}.post-header[data-astro-cid-4sn4zg3r]{margin-bottom:var(--space-2xl)}.post-header[data-astro-cid-4sn4zg3r] time[data-astro-cid-4sn4zg3r]{font-size:.85rem;color:var(--color-text-muted);font-weight:500}.post-header[data-astro-cid-4sn4zg3r] h1[data-astro-cid-4sn4zg3r]{font-size:clamp(1.8rem,4vw,2.8rem);margin-top:var(--space-sm);margin-bottom:var(--space-sm)}.post-author[data-astro-cid-4sn4zg3r]{color:var(--color-text-muted);font-size:.9rem}.post-tags[data-astro-cid-4sn4zg3r]{display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-top:var(--space-md)}.tag[data-astro-cid-4sn4zg3r]{font-size:.75rem;font-weight:500;padding:.2rem .6rem;border-radius:var(--radius-sm);background-color:var(--color-bg-alt);color:var(--color-text-muted)}.post-hero-image[data-astro-cid-4sn4zg3r]{border-radius:var(--radius-lg);overflow:hidden;margin-bottom:var(--space-2xl)}.post-hero-image[data-astro-cid-4sn4zg3r] img[data-astro-cid-4sn4zg3r]{width:100%;aspect-ratio:16 / 9;object-fit:cover}.post-body[data-astro-cid-4sn4zg3r]{max-width:720px;font-size:1.05rem;line-height:1.8;color:var(--color-text)}.post-body[data-astro-cid-4sn4zg3r] h1{font-family:var(--font-display);font-size:1.8rem;margin:var(--space-2xl) 0 var(--space-md);line-height:1.2}.post-body[data-astro-cid-4sn4zg3r] h2{font-family:var(--font-display);font-size:1.4rem;margin:var(--space-2xl) 0 var(--space-md);line-height:1.25}.post-body[data-astro-cid-4sn4zg3r] h3{font-family:var(--font-display);font-size:1.15rem;margin:var(--space-xl) 0 var(--space-sm);line-height:1.3}.post-body[data-astro-cid-4sn4zg3r] p{margin-bottom:var(--space-md)}.post-body[data-astro-cid-4sn4zg3r] img{max-width:100%;height:auto;border-radius:var(--radius-md);margin:var(--space-lg) 0}.post-body[data-astro-cid-4sn4zg3r] a{color:var(--color-accent);text-decoration:underline;text-underline-offset:3px}.post-body[data-astro-cid-4sn4zg3r] a:hover{color:var(--color-accent-hover)}.post-body[data-astro-cid-4sn4zg3r] blockquote{border-left:3px solid var(--color-accent);padding-left:var(--space-lg);margin:var(--space-lg) 0;color:var(--color-text-muted);font-style:italic}.post-body[data-astro-cid-4sn4zg3r] ul,.post-body[data-astro-cid-4sn4zg3r] ol{margin:var(--space-md) 0;padding-left:var(--space-xl)}.post-body[data-astro-cid-4sn4zg3r] li{margin-bottom:var(--space-xs)}.post-body[data-astro-cid-4sn4zg3r] pre{background-color:var(--color-bg-alt);border-radius:var(--radius-md);padding:var(--space-lg);overflow-x:auto;margin:var(--space-lg) 0;font-size:.9rem}.post-body[data-astro-cid-4sn4zg3r] code{font-size:.9em;background-color:var(--color-bg-alt);padding:.1rem .4rem;border-radius:var(--radius-sm)}.post-body[data-astro-cid-4sn4zg3r] pre code{background:none;padding:0}.post-body[data-astro-cid-4sn4zg3r] table{width:100%;border-collapse:collapse;margin:var(--space-lg) 0}.post-body[data-astro-cid-4sn4zg3r] th,.post-body[data-astro-cid-4sn4zg3r] td{padding:var(--space-sm) var(--space-md);border-bottom:1px solid var(--color-border);text-align:left;font-size:.92rem}.post-body[data-astro-cid-4sn4zg3r] th{font-weight:600;color:var(--color-text-muted)}.post-body[data-astro-cid-4sn4zg3r] hr{border:none;border-top:1px solid var(--color-border);margin:var(--space-2xl) 0}.post-footer[data-astro-cid-4sn4zg3r]{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--color-border)}.beehiiv-link[data-astro-cid-4sn4zg3r]{font-size:.9rem;font-weight:500}
+</style></head> <body> <nav class="site-nav" data-astro-cid-dmqpwcec> <div class="container nav-inner" data-astro-cid-dmqpwcec> <a href="/" class="nav-brand" data-astro-cid-dmqpwcec> <span class="nav-brand-icon" data-astro-cid-dmqpwcec> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-astro-cid-dmqpwcec><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" data-astro-cid-dmqpwcec></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" data-astro-cid-dmqpwcec></path></svg> </span> <span class="nav-brand-text" data-astro-cid-dmqpwcec>SIMON PROJECTS</span> </a> <input type="checkbox" id="menu-toggle" class="sr-only" data-astro-cid-dmqpwcec> <label for="menu-toggle" class="menu-button" aria-label="Menü megnyitása" data-astro-cid-dmqpwcec> <span class="hamburger" data-astro-cid-dmqpwcec></span> </label> <ul class="nav-links" data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec> <a href="/" data-astro-cid-dmqpwcec> Főoldal </a> </li><li data-astro-cid-dmqpwcec> <a href="/about/" data-astro-cid-dmqpwcec> Rólam </a> </li><li data-astro-cid-dmqpwcec> <a href="/projects/" data-astro-cid-dmqpwcec> Portfólióm </a> </li><li data-astro-cid-dmqpwcec> <a href="/blog/" data-astro-cid-dmqpwcec> Blog </a> </li><li data-astro-cid-dmqpwcec> <a href="/contact/" data-astro-cid-dmqpwcec> Elérhetőség </a> </li> <li class="nav-actions" data-astro-cid-dmqpwcec> <a href="/en/blog/your-qa-team-runs-on-empty-heres-how-ai-catches-more-bugs-before-they-catch-you/" class="lang-toggle" data-astro-cid-dmqpwcec>EN</a> <button type="button" data-theme-toggle aria-label="Téma váltás" data-astro-cid-tcsrer47> <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-tcsrer47> <circle cx="12" cy="12" r="5" data-astro-cid-tcsrer47></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-tcsrer47></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-tcsrer47></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-tcsrer47></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-tcsrer47></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-tcsrer47></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-tcsrer47></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-tcsrer47></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-tcsrer47></line> </svg> <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-tcsrer47> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-tcsrer47></path> </svg> </button>  <script type="module">let e;function s(){e?.abort(),e=new AbortController,document.addEventListener("click",function(a){if(!a.target.closest("[data-theme-toggle]"))return;const t=document.documentElement;t.classList.contains("dark")||!t.classList.contains("light")&&window.matchMedia("(prefers-color-scheme: dark)").matches?(t.classList.remove("dark"),t.classList.add("light"),localStorage.setItem("theme","light")):(t.classList.remove("light"),t.classList.add("dark"),localStorage.setItem("theme","dark"))},{signal:e.signal})}s();document.addEventListener("astro:after-swap",s);</script> </li> </ul> </div> </nav> <script type="module">function t(){document.addEventListener("keydown",n=>{if(n.key==="Escape"){const e=document.getElementById("menu-toggle");e?.checked&&(e.checked=!1)}})}t();</script>  <main data-astro-cid-4sn4zg3r> <article class="post-article" data-astro-cid-4sn4zg3r> <div class="container" data-astro-cid-4sn4zg3r> <a href="/blog/" class="back-link" data-astro-cid-4sn4zg3r>&larr; Vissza a blogra</a> <header class="post-header" data-astro-cid-4sn4zg3r> <time datetime="2026-04-02T07:49:00.000Z" data-astro-cid-4sn4zg3r> 2026. április 2. </time> <h1 data-astro-cid-4sn4zg3r>Your QA Team Runs on Empty — Here&#39;s How AI Catches More Bugs Before They Catch You</h1> <p class="post-author" data-astro-cid-4sn4zg3r>András Simon</p>  </header> <div class="post-hero-image" data-astro-cid-4sn4zg3r> <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&#38;amp;cs=tinysrgb&#38;amp;fit=max&#38;amp;fm=jpg&#38;amp;ixid=M3w0ODM4NTF8MHwxfHNlYXJjaHwzfHxRdWFsaXR5fGVufDB8fHx8MTc3NTEwODc5MHww&#38;amp;ixlib=rb-4.1.0&#38;amp;q=80&#38;amp;w=1080&#38;amp;utm_source=beehiiv&#38;amp;utm_medium=referral" alt="Your QA Team Runs on Empty — Here's How AI Catches More Bugs Before They Catch You" data-astro-cid-4sn4zg3r> </div> <div class="post-body" data-astro-cid-4sn4zg3r><div class='beehiiv'><style>
+  .bh__table, .bh__table_header, .bh__table_cell { border: 1px solid #C0C0C0; }
+  .bh__table_cell { padding: 5px; background-color: #FFFFFF; }
+  .bh__table_cell p { color: #2D2D2D; font-family: 'Helvetica',Arial,sans-serif !important; overflow-wrap: break-word; }
+  .bh__table_header { padding: 5px; background-color:#F1F1F1; }
+  .bh__table_header p { color: #2A2A2A; font-family:'Trebuchet MS','Lucida Grande',Tahoma,sans-serif !important; overflow-wrap: break-word; }
+</style><div class='beehiiv__body'><h1 class="heading" style="text-align:left;" id="p-4-pms-newsletter-20260326">P4PMS Newsletter — 2026.03.26</h1><hr class="content_break"><h2 class="heading" style="text-align:left;" id="introduction">🎯 INTRODUCTION</h2><p class="paragraph" style="text-align:left;">Dear IT Project Managers,</p><p class="paragraph" style="text-align:left;">You know the situation. Release is two weeks out. The QA team is buried. Regression testing covers only the highest-risk paths. The stakeholder asks &quot;are we ready to ship?&quot; — and you have no confident answer.</p><p class="paragraph" style="text-align:left;">Traditional QA automation promised to fix this. Instead, many teams found themselves in a new trap: 60–70% of testing budgets consumed by maintaining brittle test scripts, while actual coverage barely improved. The tool was supposed to save time, and instead created a new full-time job.</p><p class="paragraph" style="text-align:left;">AI-assisted QA changes the equation — not by writing tests faster, but by changing <i>what</i> gets tested, <i>how</i> failures are triaged, and <i>when</i> quality signals reach you as a PM. In this issue, I&#39;ll show you how to use Perplexity and AI tools to move from reactive bug-hunting to proactive quality intelligence — without needing to write a single line of test code yourself.</p><hr class="content_break"><h2 class="heading" style="text-align:left;" id="context-why-this-matters-now">📊 CONTEXT — WHY THIS MATTERS NOW</h2><p class="paragraph" style="text-align:left;">QA is the most common release bottleneck in IT projects — and it&#39;s getting worse. Teams are shipping faster, codebases are growing, and manual test cycles can&#39;t scale. Here&#39;s where the numbers stand in 2025–2026:</p><ul><li><p class="paragraph" style="text-align:left;"><b>75% of QA teams</b> report AI improves their ability to identify defects (State of Test Automation Report 2025)</p></li><li><p class="paragraph" style="text-align:left;">AI-driven test cycles run <b>30–60% faster</b> than manual equivalents</p></li><li><p class="paragraph" style="text-align:left;">AI test generation produces <b>87.7% useful test cases</b> — including 15.2% edge cases humans routinely miss</p></li><li><p class="paragraph" style="text-align:left;">Self-healing AI tests reduce test maintenance overhead by <b>60–85%</b> compared to traditional Selenium-based suites</p></li><li><p class="paragraph" style="text-align:left;"><b>72.8% of QA professionals</b> name AI-powered autonomous test generation as their #1 priority for 2026</p></li><li><p class="paragraph" style="text-align:left;">Early adopters who saw flat ROI (2023–24) were bolting LLMs onto old tools — purpose-built AI testing platforms (Mabl, Tricentis, Testim) are where the real gains appear</p></li></ul><p class="paragraph" style="text-align:left;"><b>The PM&#39;s hidden cost:</b> Traditional test automation doesn&#39;t save time — it shifts the labor. Someone has to maintain the scripts. AI self-healing eliminates most of that overhead and lets your QA team focus on what AI can&#39;t do: context, judgment, and exploratory testing.</p><p class="paragraph" style="text-align:left;"><b>Manual vs. AI-assisted QA approach:</b></p><div style="padding:14px 15px 14px;"><table class="bh__table" width="100%" style="border-collapse:collapse;"><tr class="bh__table_row"><th class="bh__table_header" width="33%"><p class="paragraph" style="text-align:left;"><b>Task</b></p></th><th class="bh__table_header" width="33%"><p class="paragraph" style="text-align:left;"><b>Manual</b></p></th><th class="bh__table_header" width="33%"><p class="paragraph" style="text-align:left;"><b>With AI</b></p></th></tr><tr class="bh__table_row"><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">Test strategy definition</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">2–3 days</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">3–4 hours</p></td></tr><tr class="bh__table_row"><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">Test case generation from requirements</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">1–2 weeks</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">4–8 hours</p></td></tr><tr class="bh__table_row"><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">Regression test prioritization</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">4–8 hours</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">30–60 minutes</p></td></tr><tr class="bh__table_row"><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">Bug triage and severity classification</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">2–4 hours/sprint</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">20–30 minutes</p></td></tr><tr class="bh__table_row"><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">Test coverage gap analysis</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">1–2 days</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">1–2 hours</p></td></tr><tr class="bh__table_row"><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">Release readiness summary for stakeholders</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">2–3 hours</p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;">15–20 minutes</p></td></tr><tr class="bh__table_row"><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;"><b>Total per release cycle</b></p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;"><b>3–4 weeks</b></p></td><td class="bh__table_cell" width="33%"><p class="paragraph" style="text-align:left;"><b>4–6 days</b></p></td></tr></table></div><hr class="content_break"><h2 class="heading" style="text-align:left;" id="practical-example-step-by-step">🔍 PRACTICAL EXAMPLE: STEP BY STEP</h2><h3 class="heading" style="text-align:left;" id="the-scenario-crm-platform-upgrade-6">The Scenario: CRM Platform Upgrade, 6-Sprint Release Cycle</h3><p class="paragraph" style="text-align:left;"><b>Situation:</b> A 200-person financial services company is upgrading its CRM platform. The development team has 5 sprints of feature work done. Sprint 6 is &quot;hardening&quot; — QA, bug fixing, and release preparation. Three QA engineers cover the entire scope. The PM needs a reliable go/no-go signal by end of sprint.</p><p class="paragraph" style="text-align:left;"><b>The challenge:</b> - 280 user stories delivered across 5 sprints; test coverage is unclear - QA team manually prioritizes what to test — it&#39;s gut-feel, not data-driven - Stakeholders want a risk-based quality report, not just a bug list</p><hr class="content_break"><h3 class="heading" style="text-align:left;" id="step-1-define-the-a-iassisted-test-">Step 1: Define the AI-assisted test strategy</h3><div class="codeblock"><pre><code>You are a senior QA architect helping an IT project manager define a risk-based test strategy.
+
+Project context:
+- System: Custom CRM platform (migrated from Salesforce)
+- Team: 5 developers, 3 QA engineers, 1 PM
+- Release cycle: 6 sprints, currently in Sprint 6 (hardening)
+- Deliverables: 280 user stories across modules: Contact Management, Deal Pipeline,
+  Reporting, Integrations (ERP, email), User Administration
+- Constraint: 2 weeks of QA time remaining before release
+
+Define a risk-based test strategy that includes:
+1. Module risk ranking (which areas carry the highest defect probability and business impact)
+2. Test coverage priorities (what must be tested vs. what can be sampled vs. what can be deferred)
+3. Regression scope recommendation (which existing functions are most at-risk from new code)
+4. Test types to include (smoke, functional, integration, UAT, performance — which and why)
+5. Go/no-go criteria (what quality gates must pass before release is approved)
+
+Output as a concise strategy document, PM-readable, max 1 page.
+</code></pre></div><hr class="content_break"><h3 class="heading" style="text-align:left;" id="step-2-generate-test-cases-from-use">Step 2: Generate test cases from user stories</h3><div class="codeblock"><pre><code>You are a senior QA engineer. Generate a test case set from the following user stories.
+
+For each user story, produce:
+- Happy path test case (expected flow, expected result)
+- Negative test cases (invalid inputs, edge conditions)
+- Integration check (if this story touches other systems or modules)
+- Acceptance criteria validation (map each AC to a specific test step)
+
+Format: Gherkin-style (Given / When / Then) for clarity.
+
+User stories:
+[paste 5–10 user stories from your backlog here]
+
+Focus on: data integrity, role-based access control, and integration with ERP system.
+Flag any ambiguous acceptance criteria that need clarification before testing.
+</code></pre></div><hr class="content_break"><h3 class="heading" style="text-align:left;" id="step-3-riskbased-bug-prioritization">Step 3: Risk-based bug prioritization</h3><div class="codeblock"><pre><code>You are a QA lead helping a PM prioritize defects for a release decision.
+
+Bug list:
+[paste your current bug list — title, module, severity label (if any), steps to reproduce]
+
+For each bug, evaluate:
+1. Business impact (1–5): How badly does this affect end users&#39; core workflows?
+2. Frequency exposure (1–5): How often will users encounter this?
+3. Workaround availability (Yes/No/Partial)
+4. Technical complexity to fix (Low/Medium/High — rough estimate only)
+5. Release risk classification: Blocker / High / Medium / Low / Cosmetic
+
+Output as a prioritized table with:
+- A &quot;must fix before release&quot; list
+- A &quot;can ship with known issue&quot; list (with conditions and workaround notes)
+
+Context: This is an internal CRM used by 80 sales reps. Core workflows: creating contacts,
+logging calls, updating deal stages.
+</code></pre></div><hr class="content_break"><h3 class="heading" style="text-align:left;" id="step-4-test-coverage-gap-analysis">Step 4: Test coverage gap analysis</h3><div class="codeblock"><pre><code>You are a QA analyst helping assess test coverage completeness before a release.
+
+I will provide you with:
+1. A list of features delivered (user stories / modules)
+2. A list of test cases currently written or executed
+
+Perform a coverage gap analysis:
+- Which features have no test coverage?
+- Which features have only happy-path coverage (no negative cases)?
+- Which integration points have no test coverage?
+- What are the top 5 uncovered risk areas?
+
+Recommend a triage plan: given 3 QA engineers and 8 working days remaining,
+which gaps should be addressed first?
+
+Feature list:
+[paste module/feature list]
+
+Test case inventory:
+[paste list of existing test cases or describe coverage by module]
+</code></pre></div><hr class="content_break"><h3 class="heading" style="text-align:left;" id="step-5-release-readiness-summary-fo">Step 5: Release readiness summary for stakeholders</h3><div class="codeblock"><pre><code>You are a technical PM preparing a release readiness report for a steering committee.
+
+Input data:
+- Test execution results: [X test cases run, Y passed, Z failed, W blocked]
+- Open bugs: [Blockers: X, High: Y, Medium: Z, Low: W]
+- Test coverage: [% by module or description]
+- Known risks: [list]
+- Pending items: [list]
+
+Write a 1-page release readiness summary that includes:
+1. Executive summary (2–3 sentences: are we ready or not, and why)
+2. Quality KPI snapshot (table: planned vs. actual test execution, pass rate, defect density)
+3. Open risk register (what we know, what we&#39;re accepting, what&#39;s being monitored)
+4. Recommendation: Go / Conditional Go / No-Go (with conditions for Conditional Go)
+5. Decision required from steering committee
+
+Tone: factual, concise, no technical jargon. Audience: business stakeholders, not developers.
+</code></pre></div><p class="paragraph" style="text-align:left;"><b>Result:</b> The PM walks into the steering committee with a data-driven go/no-go recommendation instead of a gut feeling. QA effort is focused on actual risk, not coverage theater.</p><hr class="content_break"><h2 class="heading" style="text-align:left;" id="cookbook-qa-automation-with-ai">📚 COOKBOOK: QA Automation with AI</h2><h3 class="heading" style="text-align:left;" id="recipe-1-instant-test-strategy-from">RECIPE #1: Instant Test Strategy from Requirements</h3><p class="paragraph" style="text-align:left;"><b>Problem:</b> A new project starts and someone asks &quot;what&#39;s the test plan?&quot; You don&#39;t have one, and writing it from scratch takes days.</p><p class="paragraph" style="text-align:left;"><b>Prompt:</b></p><div class="codeblock"><pre><code>You are a QA strategist helping an IT PM define a testing approach.
+
+Project brief:
+- Project: [name and 2-sentence description]
+- Type: [web app / mobile / API / data migration / system integration]
+- Tech stack: [frontend, backend, database, integrations]
+- Team: [developers, QA engineers, numbers]
+- Timeline: [X weeks]
+- Risk areas (known): [list what you know]
+- Compliance requirements: [GDPR, SOC2, HIPAA, internal policy — or none]
+
+Generate a test strategy that covers:
+1. Testing scope and out-of-scope
+2. Test levels (unit, integration, system, UAT) — who owns each
+3. Test environments required
+4. Test data approach
+5. Defect management process
+6. Entry and exit criteria for each test phase
+7. Tools recommendation (given the stack)
+8. Estimated effort by phase
+
+Output: one-page strategy document in PM-readable format.
+</code></pre></div><p class="paragraph" style="text-align:left;"><b>Time saved:</b> 2–3 days → 3–4 hours (~80%) <b>Result:</b> A defensible, structured test strategy ready to review with the team — not a blank page.</p><hr class="content_break"><h3 class="heading" style="text-align:left;" id="recipe-2-ai-assisted-sprint-qa-revi">RECIPE #2: AI-Assisted Sprint QA Review</h3><p class="paragraph" style="text-align:left;"><b>Problem:</b> End of sprint. Developers say it&#39;s done. QA isn&#39;t sure what actually got tested. You need a clear picture fast.</p><p class="paragraph" style="text-align:left;"><b>Prompt:</b></p><div class="codeblock"><pre><code>You are a QA lead running a sprint QA review for a PM.
+
+Sprint data:
+- Sprint goal: [what was supposed to be delivered]
+- Stories completed (DoD met): [list]
+- Stories in progress / not completed: [list]
+- Bugs found this sprint: [list with severity]
+- Bugs fixed this sprint: [list]
+- Test cases executed: [number or description]
+- Automated test results: [pass/fail counts if available]
+
+Generate a sprint QA summary that includes:
+1. Quality health score for this sprint (Red/Amber/Green) with rationale
+2. Coverage assessment: what was tested, what wasn&#39;t
+3. Defect trend: is quality improving or degrading sprint-over-sprint?
+4. Top 3 quality risks to carry forward to next sprint
+5. Recommended actions before sprint review or release
+
+Keep it to one page. PM-friendly language.
+</code></pre></div><p class="paragraph" style="text-align:left;"><b>Time saved:</b> 1–2 hours → 15–20 minutes (~85%) <b>Result:</b> A sprint quality snapshot ready for the sprint review, not assembled the morning of.</p><hr class="content_break"><h3 class="heading" style="text-align:left;" id="recipe-3-bug-triage-under-time-pres">RECIPE #3: Bug Triage Under Time Pressure</h3><p class="paragraph" style="text-align:left;"><b>Problem:</b> Sprint backlog has 40 open bugs. You have 3 days before the release decision. Where do you start?</p><p class="paragraph" style="text-align:left;"><b>Prompt:</b></p><div class="codeblock"><pre><code>You are a senior QA engineer helping triage a bug backlog before a release decision.
+
+Bug list:
+[list of bug titles, affected modules, current severity labels]
+
+For each bug:
+1. Re-assess business severity (Blocker / Critical / Major / Minor / Cosmetic)
+2. Identify duplicates or related issues that should be grouped
+3. Flag any bugs that are actually missing requirements, not defects
+4. Estimate relative fix effort (S/M/L — rough only)
+5. Release decision recommendation:
+   Must Fix / Fix If Time / Defer with workaround / Accept as known issue
+
+Output: prioritized triage table + a &quot;must fix&quot; shortlist for the release decision meeting.
+
+Context: [describe the system, user base, and any compliance constraints]
+</code></pre></div><p class="paragraph" style="text-align:left;"><b>Time saved:</b> 2–4 hours → 30–45 minutes (~80%) <b>Result:</b> A defensible bug priority list for the release decision — not a gut-feel severity sort.</p><hr class="content_break"><h3 class="heading" style="text-align:left;" id="recipe-4-uat-planning-and-script-ge">RECIPE #4: UAT Planning and Script Generation</h3><p class="paragraph" style="text-align:left;"><b>Problem:</b> UAT is coming and the business users have no idea what to test. You need to hand them a structured script — without spending a week writing it.</p><p class="paragraph" style="text-align:left;"><b>Prompt:</b></p><div class="codeblock"><pre><code>You are a business analyst and QA specialist helping prepare a UAT test script for non-technical users.
+
+System: [name and brief description]
+Target UAT participants: [roles — e.g. &quot;sales managers, account coordinators — not technical&quot;]
+Core workflows to validate: [list 5–8 key end-to-end business processes]
+Known risk areas: [what the team is most concerned about]
+
+For each workflow, generate:
+- Plain-language test scenario title
+- Step-by-step test script (written for a non-technical user, no jargon)
+- What to check at each step (expected result in business terms)
+- What to do if something looks wrong (who to contact, how to log it)
+
+Also generate:
+- A 1-page UAT kick-off guide (&quot;what we need from you and why&quot;)
+- A simple defect reporting template for UAT participants
+- Acceptance criteria summary: what &quot;pass&quot; means for UAT overall
+
+Tone: friendly, clear, zero technical jargon.
+</code></pre></div><p class="paragraph" style="text-align:left;"><b>Time saved:</b> 2–3 days → 4–6 hours (~75%) <b>Result:</b> UAT participants arrive prepared, not confused. You get structured feedback instead of email chains saying &quot;something&#39;s broken.&quot;</p><hr class="content_break"><h2 class="heading" style="text-align:left;" id="key-takeaways">💡 KEY TAKEAWAYS</h2><ul><li><p class="paragraph" style="text-align:left;">QA bottlenecks are a PM problem, not just a QA problem — AI gives you the visibility to manage them proactively</p></li><li><p class="paragraph" style="text-align:left;">Risk-based test prioritization beats coverage percentage — AI builds that risk map from your backlog in minutes</p></li><li><p class="paragraph" style="text-align:left;">The biggest hidden cost in test automation is maintenance, not authoring — AI self-healing tests address the root cause, not the symptom</p></li><li><p class="paragraph" style="text-align:left;">Early AI QA adopters who saw flat ROI were bolting LLMs onto outdated tools — purpose-built platforms (Mabl, Tricentis, Testim) deliver the real gains</p></li><li><p class="paragraph" style="text-align:left;">The &quot;are we ready to ship?&quot; question now has an AI-generated, data-driven answer — you just need to ask it the right way</p></li></ul><hr class="content_break"><h2 class="heading" style="text-align:left;" id="support-p-4-pms">☕ SUPPORT P4PMS</h2><p class="paragraph" style="text-align:left;">If this newsletter saved you time, consider supporting the work:</p><p class="paragraph" style="text-align:left;">👉 <b><a class="link" href="https://buymeacoffee.com/p4pms?utm_source=andrs-newsletter-366e2f.beehiiv.com&utm_medium=newsletter&utm_campaign=post-campaign" target="_blank" rel="noopener noreferrer nofollow">buymeacoffee.com/p4pms</a></b></p><hr class="content_break"><h2 class="heading" style="text-align:left;" id="next-issue-preview">👋 NEXT ISSUE PREVIEW</h2><p class="paragraph" style="text-align:left;">Next week: <b>Project Kickoff Preparation with AI</b> — How to generate a kickoff deck, RACI matrix, and project charter in hours, not days.</p><hr class="content_break"><p class="paragraph" style="text-align:left;">Best regards, — The P4PMs Team</p></div><div class='beehiiv__footer'><br class='beehiiv__footer__break'><hr class='beehiiv__footer__line'><a target="_blank" class="beehiiv__footer_link" style="text-align: center;" href="https://www.beehiiv.com/?utm_campaign=723b7e5f-9a23-4090-ba5d-d00a6e427a2b&utm_medium=post_rss&utm_source=perplexity_for_project_managers">Powered by beehiiv</a></div></div></div> <footer class="post-footer" data-astro-cid-4sn4zg3r> <a href="https://andrs-newsletter-366e2f.beehiiv.com/p/your-qa-team-runs-on-empty-here-s-how-ai-catches-more-bugs-before-they-catch-you" target="_blank" rel="noopener" class="beehiiv-link" data-astro-cid-4sn4zg3r>
+Eredeti poszt megtekintése a Beehiiv-en &rarr;
+</a> </footer> <section class="newsletter-signup" data-astro-cid-bfbmamsi> <div class="newsletter-inner" data-astro-cid-bfbmamsi> <h3 data-astro-cid-bfbmamsi>Iratkozz fel a hírlevélre</h3> <p data-astro-cid-bfbmamsi> AI tippek projekt menedzsmenthez — közvetlenül a postaládádba. </p> <form action="https://andrs-newsletter-366e2f.beehiiv.com/subscribe" method="POST" class="signup-form" data-astro-cid-bfbmamsi> <input type="email" name="email" required placeholder="Email címed" aria-label="Email cím" data-astro-cid-bfbmamsi> <button type="submit" data-astro-cid-bfbmamsi>Feliratkozás</button> </form> <p class="signup-note" data-astro-cid-bfbmamsi> Nincs spam. Bármikor leiratkozhatsz. </p> </div> </section> </div> </article> </main>  <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte>&copy; 2026 Simon András e.v. — Minden jog fenntartva!</p> <div class="footer-links" data-astro-cid-sz7xmlte> <a id="footer-email" href="#" data-astro-cid-sz7xmlte>...</a> <span class="separator" data-astro-cid-sz7xmlte>&middot;</span> <a href="/impresszum/" data-astro-cid-sz7xmlte>Impresszum</a> </div> </div> <script type="module">function o(){const e="info@simonprojects.eu",t=document.getElementById("footer-email");t&&(t.href=`mailto:${e}`,t.textContent=e)}o();document.addEventListener("astro:after-swap",o);</script> </footer> <!-- Global scroll animations --> <script type="module">function r(){const s=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&(t.target.classList.add("is-visible"),s.unobserve(t.target))})},{threshold:.15});document.querySelectorAll(".animate-on-scroll").forEach(e=>{s.observe(e)})}r();document.addEventListener("astro:after-swap",r);</script> </body> </html>
