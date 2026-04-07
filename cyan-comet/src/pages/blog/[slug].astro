@@ -12,10 +12,36 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+
+const blogPostSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.description,
+  image: post.image || undefined,
+  datePublished: new Date(post.pubDate).toISOString(),
+  author: {
+    '@type': 'Person',
+    name: post.author || 'Simon András',
+    url: 'https://simonprojects.eu/',
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Simon András',
+    url: 'https://simonprojects.eu/',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `https://simonprojects.eu/blog/${post.slug}/`,
+  },
+  keywords: post.categories?.join(', ') || undefined,
+  inLanguage: 'hu',
+});
 ---
 
 <BaseLayout title={post.title} description={post.description}>
   <main>
+    <script type="application/ld+json" set:html={blogPostSchema} />
     <article class="post-article">
       <div class="container">
         <a href="/blog/" class="back-link">&larr; Vissza a blogra</a>
