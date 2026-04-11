@@ -1,4 +1,4 @@
-# pw-refactor — simonprojects.eu statikus oldal
+# simonprojects-astro — simonprojects.eu statikus oldal
 
 ## Projekt áttekintés
 
@@ -6,7 +6,7 @@ A `simonprojects.eu` WordPress oldal kiváltása Astro 6.x statikus site-tal.
 
 - **Framework:** Astro 6.x
 - **Astro projekt:** `cyan-comet/` almappa (fejlesztési részletek ott: `cyan-comet/CLAUDE.md`)
-- **GitHub repo:** `hu1asn0/PW-refactor`
+- **GitHub repo:** `hu1asn0/simonprojects-astro`
 
 ## Deploy — cPanel (mhosting.hu)
 
@@ -15,8 +15,8 @@ A `deploy` branch tartalmazza a kész `dist/` kimenetet. A cPanel naponta pull-o
 **Manuális deploy lépések:**
 
 ```bash
-cd ~/pw-refactor/cyan-comet && npm run build
-cd ~/pw-refactor && git checkout deploy && git rm -rf . && cp -r cyan-comet/dist/* . && git add -A && git commit -m "deploy: update" && git push origin deploy && git checkout main
+cd ~/simonprojects-astro/cyan-comet && npm run build
+cd ~/simonprojects-astro && git checkout deploy && git rm -rf . && cp -r cyan-comet/dist/* . && git add -A && git commit -m "deploy: update" && git push origin deploy && git checkout main
 ```
 
 **cPanel beállítás:**
